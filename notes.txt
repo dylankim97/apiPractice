@@ -1,0 +1,19 @@
+
+What does statelessness mean in terms of API? 
+
+- Statelessness means that every HTTP request happens in complete isolation. When the client makes an HTTP request, it includes all information necessary for the server to fulfill that request. The server never relies on information from previous requests.
+
+
+What is REST API?
+
+- Representational state transfer is a software architectural style that defines a set of constraints to be used for creating Web services.
+
+
+What is HTTP?
+
+- HTTP is a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser.
+
+
+CRUD = create, read, update, delete data. 
+
+
