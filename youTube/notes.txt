@@ -1,0 +1,27 @@
+
+What does statelessness mean in terms of API? 
+
+- Statelessness means that every HTTP request happens in complete isolation. When the client makes an HTTP request, it includes all information necessary for the server to fulfill that request. The server never relies on information from previous requests.
+
+
+What is REST API?
+
+- Representational state transfer is a software architectural style that defines a set of constraints to be used for creating Web services.
+
+
+What is HTTP?
+
+- HTTP is a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser.
+
+
+CRUD = create, read, update, delete data. 
+
+
+What is parse?
+
+- Parsing, syntax analysis, or syntactic analysis is the process of analyzing a string of symbols, either in natural language, computer languages or data structures, conforming to the rules of a formal grammar.
+
+
+What is parser?
+
+- In computer technology, a parser is a program, usually part of a compiler, that receives input in the form of sequential source program instructions, interactive online commands, markup tags, or some other defined interface and breaks them up into parts (for example, the nouns (objects), verbs (methods), and their attributes or options) that can then be managed by other programming (for example, other components in a compiler). A parser may also check to see that all input has been provided that is necessary.
