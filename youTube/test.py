@@ -23,13 +23,14 @@ def main():
 def perform(answer):
 
     if answer == "post":
-        name = input("name of the vid?")
-        view = input("how many views?")
-        likes = input("how many likes?")
-        id = input("what is the id?")
-        requests.put(BASE + f"video/{id}", {"name": name, "view": view, "likes": likes})
-        #for i in range(len(data)):
-        #    requests.put(BASE + "video/" + str(i+1), data[i])
+        #name = input("name of the vid?")
+        #view = input("how many views?")
+        #likes = input("how many likes?")
+        #id = input("what is the id?")
+        #requests.put(BASE + f"video/{id}", {"name": name, "view": view, "likes": likes})
+        for i in range(len(data)):
+            response = requests.put(BASE + "video/" + str(i), data[i])
+            print(response.json())
 
     elif answer == "getbyid":
         video_id = input("What is the id of the video?")
