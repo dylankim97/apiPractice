@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 # Create a Flask application and wrap it around API
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///practice.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///realFinal.db'
 db = SQLAlchemy(app)
 
 
@@ -62,17 +62,20 @@ class Video(Resource):
         # args = video_put_args.parse_args()
         # video = VideoModel1(id=video_id, name=args['name'], view=args['view'], likes=args['likes'])
         args = video_put_args.parse_args()
-        print("첫번")
+
+        result = VideoModel1.query.filter_by(id=video_id).first()
+        if result:
+            print("video with the given id already exists")
+            abort(409, message="video with the given id already exists")
+
         video = VideoModel1(id=video_id, name=args['name'], view=args['view'], likes=args['likes'])
-        print("두번")
         db.session.add(video)
-        print("번")
         db.session.commit()
-        print("수ㄹㅎㄴ개ㅑ허네대ㅑㄱ허퍄ㅐㄷㄴ궈햗눅ㅎ페ㅑㄷㄴ구햗ㄴㄱㅎ")
 
 
     def delete(self, video_id):
-        del videos[video_id]
+        VideoModel1.query.filter_by(id=video_id).delete()
+        db.session.commit()
         return "", 204
 
 

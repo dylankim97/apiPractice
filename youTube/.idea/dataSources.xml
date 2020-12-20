@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/dabase.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="realFinal" uuid="b68d3548-fe71-4721-9039-70c66ce892db">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/realFinal.db</jdbc-url>
+    </data-source>
   </component>
 </project>
