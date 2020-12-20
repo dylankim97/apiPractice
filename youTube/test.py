@@ -4,7 +4,7 @@ BASE = "http://127.0.0.1:5000/"
 
 data = [{"name": "Zico", "view": 1000, "likes": 99},
         {"name": "Swings", "view": 999, "likes": 30},
-        {"name": "Esens", "view": 9923, "likes": 999}]
+        {"name": "Esens", "view": 9923, "likes": 99099}]
 
 
 def main():
@@ -29,8 +29,8 @@ def perform(answer):
         #id = input("what is the id?")
         #requests.put(BASE + f"video/{id}", {"name": name, "view": view, "likes": likes})
         for i in range(len(data)):
-            response = requests.put(BASE + "video/" + str(i), data[i])
-            print(response.json())
+            requests.put(BASE + "video/" + str(i), data[i])
+
 
     elif answer == "getbyid":
         video_id = input("What is the id of the video?")

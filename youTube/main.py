@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 # Create a Flask application and wrap it around API
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dabase.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///practice.db'
 db = SQLAlchemy(app)
 
 
@@ -17,15 +17,8 @@ class VideoModel1(db.Model):
     view = db.Column(db.Integer, nullable=False)
     likes = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, id, name, view, likes):
-        self.id = id
-        self.name = name
-        self.view = view
-        self.likes = likes
-
     def __repr__(self):
         return f"Videos(name = {self.name}, view = {self.view}, likes = {self.likes}) "
-
 
 
 
@@ -39,7 +32,7 @@ video_put_args.add_argument("likes", type=int, help="Likes of the video is requi
 # Help is for error handling. See notes to learn what parsing means.
 
 resource_fields = {
-    'id': fields.String,
+    'id': fields.Integer,
     'name': fields.String,
     'view': fields.Integer,
     'likes': fields.Integer
@@ -56,28 +49,31 @@ videos = {}
 
 # Create a Video class that inherits from Resource. Function is used for creating a video object and getting its information.
 class Video(Resource):
+
     @marshal_with(resource_fields)
     def get(self, video_id):
-        result = VideoModel1.query.get(id=video_id)
+        result = VideoModel1.query.filter_by(id=video_id).first()
+        if not result:
+            abort(404, message="Could not find video with that id")
         return result
 
     @marshal_with(resource_fields)
     def put(self, video_id):
-        #args = video_put_args.parse_args()
-        #video = VideoModel1(id=video_id, name=args['name'], view=args['view'], likes=args['likes'])
+        # args = video_put_args.parse_args()
+        # video = VideoModel1(id=video_id, name=args['name'], view=args['view'], likes=args['likes'])
         args = video_put_args.parse_args()
-        video = VideoModel1(1, "Swings", 999, 10)
+        print("첫번")
+        video = VideoModel1(id=video_id, name=args['name'], view=args['view'], likes=args['likes'])
+        print("두번")
         db.session.add(video)
+        print("번")
         db.session.commit()
-        return video, 201
+        print("수ㄹㅎㄴ개ㅑ허네대ㅑㄱ허퍄ㅐㄷㄴ궈햗눅ㅎ페ㅑㄷㄴ구햗ㄴㄱㅎ")
 
 
     def delete(self, video_id):
         del videos[video_id]
         return "", 204
-
-
-
 
 
 # Function for practice
@@ -88,7 +84,7 @@ class HelloWorld(Resource):
     def post(self, name):
         return {"data": "Posted!"}
 
-
+print("eee")
 # This creates api
 api.add_resource(Video, "/video/<int:video_id>")
 api.add_resource(HelloWorld, "/helloworld/<string:name>")  # it is going to be accessble through /helloworld
