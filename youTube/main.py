@@ -87,7 +87,7 @@ class HelloWorld(Resource):
     def post(self, name):
         return {"data": "Posted!"}
 
-print("eee")
+
 # This creates api
 api.add_resource(Video, "/video/<int:video_id>")
 api.add_resource(HelloWorld, "/helloworld/<string:name>")  # it is going to be accessble through /helloworld
